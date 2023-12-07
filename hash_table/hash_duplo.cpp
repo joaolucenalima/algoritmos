@@ -22,7 +22,7 @@ int main()
 
   int m = 13;
   int k, pos;
-  int colisoes = 0;
+  int colisoes;
   int tabela_hash[m];
 
   for (int i = 0; i < m; i++)
@@ -33,6 +33,7 @@ int main()
   for (int i = 0; i < m; i++)
   {
     cin >> k;
+    colisoes = 0;
     do
     {
       pos = hash_duplo(k, colisoes, m);

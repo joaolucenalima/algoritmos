@@ -19,7 +19,7 @@ int main()
 
   int m = 13;
   int k, pos;
-  int colisoes = 0;
+  int colisoes;
   int tabela_hash[m];
 
   for (int i = 0; i < m; i++)
