@@ -5,26 +5,26 @@ using namespace std;
 struct Pedra
 {
   string nome;
-  float volume;
+  int volume;
   int peso;
   int preco;
 };
 
 int max_peso = 400;
-float max_volume = 1.0;
+float max_volume = 1000;
 
 Pedra pedras[] = {
-    {"Esmeralda", 0.521, 127, 410},
-    {"Topazio", 0.857, 254, 320},
-    {"Diamante", 0.455, 263, 500},
-    {"Rubi", 0.065, 134, 315},
-    {"Jade", 0.012, 111, 280}};
+    {"Esmeralda", 521, 127, 410},
+    {"Topazio", 857, 254, 320},
+    {"Diamante", 455, 263, 500},
+    {"Rubi", 65, 134, 315},
+    {"Jade", 12, 111, 280}};
 
-int estrategia_gulosa() // ESTRATÉGIA GULOSA - O(n) (se não precisar ordenar, senão O(nlogn)
+int estrategia_gulosa() // ESTRATÉGIA GULOSA - O(n) (se não precisar ordenar, senão O(nlogn))
 {
   int preco_total = 0;
   int peso_total = 0;
-  float volume_total = 0;
+  int volume_total = 0;
 
   for (int i = 0; i < 5; i++)
   {
@@ -39,7 +39,7 @@ int estrategia_gulosa() // ESTRATÉGIA GULOSA - O(n) (se não precisar ordenar, 
   return preco_total;
 }
 
-int solve(int i, int peso, float volume, int preco, int &maior_preco) // FORÇA BRUTA - O(2^n)
+int solve(int i, int peso, int volume, int preco, int &maior_preco) // FORÇA BRUTA - O(2^n)
 {
   if (i == 5)
   {
@@ -50,16 +50,12 @@ int solve(int i, int peso, float volume, int preco, int &maior_preco) // FORÇA 
     return 0;
   }
 
-  // para otimização
-  // if (solucao[i][peso][volume] != -1) return solucao[i][peso][volume];
-
   int solve1 = solve(i + 1, peso, volume, preco, maior_preco);
   int solve2;
 
   if (peso + pedras[i].peso <= max_peso && volume + pedras[i].volume <= max_volume)
     solve2 = solve(i + 1, peso + pedras[i].peso, volume + pedras[i].volume, preco + pedras[i].preco, maior_preco);
 
-  // solucao[i][peso][volume] = max(solve1, solve2);
   return max(solve1, solve2);
 }
 
