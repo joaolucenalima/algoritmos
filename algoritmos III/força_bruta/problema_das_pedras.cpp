@@ -20,7 +20,7 @@ Pedra pedras[] = {
     {"Rubi", 65, 134, 315},
     {"Jade", 12, 111, 280}};
 
-int estrategia_gulosa() // ESTRATÉGIA GULOSA - O(n) (se não precisar ordenar, senão O(nlogn))
+int estrategia_gulosa() // ESTRATÉGIA GULOSA - O(n) (se precisar ordenar então será O(n log n))
 {
   int preco_total = 0;
   int peso_total = 0;
