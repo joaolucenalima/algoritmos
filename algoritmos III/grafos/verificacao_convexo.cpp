@@ -29,7 +29,7 @@ int main()
     }
 
     list<int> fila;
-    bool visitados[vertices] = {false};
+    bool visitados[vertices];
 
     fila.push_back(0);
     visitados[vertice_inicial] = true;
@@ -42,24 +42,23 @@ int main()
         for (j = 0; j < vertices; j++)
             if (matriz[cidade_a_verificar][j] == 1 && !visitados[j])
             {
-                cidade_a_verificar = j;
                 visitados[j] = true;
-                j = 0;
+                fila.push_back(j);
             }
-
-        bool conexo = true;
-        for (i = 0; i < vertices; i++)
-            if (!visitados[i])
-            {
-                conexo = false;
-                break;
-            }
-
-        if (conexo)
-            cout << "Conexo" << endl;
-        else
-            cout << "Nao conexo" << endl;
-
-        return 0;
     }
+
+    bool conexo = true;
+    for (i = 0; i < vertices; i++)
+        if (!visitados[i])
+        {
+            conexo = false;
+            break;
+        }
+
+    if (conexo)
+        cout << "Conexo" << endl;
+    else
+        cout << "Desconexo" << endl;
+
+    return 0;
 }
