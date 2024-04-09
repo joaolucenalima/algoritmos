@@ -28,6 +28,7 @@ int main()
         matriz[j][i] = 1;
     }
 
+    // bfs
     list<int> fila;
     bool visitados[vertices];
 
