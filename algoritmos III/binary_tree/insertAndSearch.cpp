@@ -9,7 +9,7 @@ struct treenode
   struct treenode *right;
 };
 
-void bTreeInsert(treenode *root, int value)
+void binaryTreeInsert(treenode *root, int value)
 {
   if (root == NULL)
   {
@@ -20,15 +20,15 @@ void bTreeInsert(treenode *root, int value)
   }
   else if (value < root->info)
   {
-    bTreeInsert(root->left, value);
+    binaryTreeInsert(root->left, value);
   }
   else
   {
-    bTreeInsert(root->right, value);
+    binaryTreeInsert(root->right, value);
   }
 }
 
-treenode *bTreeSearch(treenode *root, int value)
+treenode *binaryTreeSearch(treenode *root, int value)
 {
   if (root == NULL)
     return NULL;
@@ -37,9 +37,9 @@ treenode *bTreeSearch(treenode *root, int value)
     return root;
 
   if (value < root->info)
-    return bTreeSearch(root->left, value);
+    return binaryTreeSearch(root->left, value);
 
-  return bTreeSearch(root->right, value);
+  return binaryTreeSearch(root->right, value);
 }
 
 int main()
@@ -53,13 +53,13 @@ int main()
   {
     int value;
     cin >> value;
-    bTreeInsert(root, value);
+    binaryTreeInsert(root, value);
   }
 
   int searchedElement;
   cin >> searchedElement;
 
-  treenode *searchedNode = bTreeSearch(root, searchedElement);
+  treenode *searchedNode = binaryTreeSearch(root, searchedElement);
 
   if (searchedNode != NULL)
     cout << "Encontrado!" << endl;
