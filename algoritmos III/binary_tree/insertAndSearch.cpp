@@ -9,7 +9,7 @@ struct treenode
   struct treenode *right;
 };
 
-void binaryTreeInsert(treenode *root, int value)
+void binaryTreeInsert(treenode *&root, int value)
 {
   if (root == NULL)
   {
